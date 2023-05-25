@@ -8,3 +8,4 @@ vSpeed = 0;
 speedWalk = 2.0;
 
 testing = "i feel sick";
+test2 = "but nobody came";
