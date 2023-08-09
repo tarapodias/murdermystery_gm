@@ -1,3 +1,4 @@
-global.gamePaused = false;
+ global.gamePaused = false;
+global.state = 0;
 
-room_goto(ROOM_START);
+room_goto(ROOM_TITLE);

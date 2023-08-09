@@ -2,7 +2,7 @@
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
   "name": "spr_collision",
-  "bbox_bottom": 111,
+  "bbox_bottom": 105,
   "bbox_left": 0,
   "bbox_right": 96,
   "bbox_top": 0,

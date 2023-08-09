@@ -34,10 +34,7 @@ function scr_playerstatefree(){
 			sprite_index = lonnaidle_spr;
 		}
 		
-		if(keyActivate) 
-		{
-			scr_statemanager();
-		}
+		
 		
 
 }
