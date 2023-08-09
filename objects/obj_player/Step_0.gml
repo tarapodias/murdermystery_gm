@@ -57,7 +57,7 @@ switch(global.state)
 	
 	case 2:
 	
-		if !(instance_exists(textbox_obj))
+		if !(instance_exists(obj_textbox))
 		{
 			create_textbox(whocollided);
 		}
@@ -67,7 +67,7 @@ switch(global.state)
 	
 	case 3:
 	
-		if !(instance_exists(textbox_obj))
+		if !(instance_exists(obj_textbox))
 		{
 			create_textbox(storechoice);
 			storechoice = -1;
@@ -79,7 +79,7 @@ switch(global.state)
 
 
 
-if(place_empty(x, y, interactiveparent_obj))
+if(place_empty(x, y, obj_interactiveparent))
 {
 	whocollided = -1;
 }

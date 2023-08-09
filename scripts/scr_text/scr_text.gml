@@ -123,7 +123,7 @@ function scr_option(_option, _link_id) {
 
 function create_textbox(whichdialogue) {
 	
-	with (instance_create_layer(player_obj.x, player_obj.y, "Instances", textbox_obj))
+	with (instance_create_layer(obj_player.x, obj_player.y, "Instances", obj_textbox))
 	{
 		scr_playerstatetalk(whichdialogue);
 	}

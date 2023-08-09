@@ -139,14 +139,14 @@ if (accept_key)
 			{
 				
 			
-				instance_destroy(textbox_obj);
+				instance_destroy(obj_textbox);
 			}
 			
 			else
 			{
-				player_obj.waittime = true;
-				player_obj.alarm[0] = 60*0.75;
-				instance_destroy(textbox_obj);
+				obj_player.waittime = true;
+				obj_player.alarm[0] = 60*0.75;
+				instance_destroy(obj_textbox);
 			}
 			
 			
@@ -265,7 +265,7 @@ if (draw_char == text_length[page] && page == page_number - 1)
 		if (option_pos == op)
 		{
 			draw_sprite(arrow_spr, 0, _txtb_x + 15, _txtb_y - _option_space*option_number + _option_space*op + 5);
-			player_obj.storechoice = option_link_id[option_pos]; 
+			obj_player.storechoice = option_link_id[option_pos]; 
 			
 		}
 		

@@ -58,8 +58,16 @@ function scr_playerstatetalk(whichdialogue){
 				scr_text_wave(7, 15); scr_text_shake(49, 53);
 			scr_text("lets add another page just to make sure it really really works");
 			scr_text("i wanna really really really wanna zigazig ah.", "lonna");
+			test_obj.updatetext = true;
 			
 		break;
+		
+			case "test_updated":	
+		
+				scr_text("I've seen all this shit already.");
+				scr_text("It's soozetown!");
+			
+			break;
 		
 		case "chest":	
 		
