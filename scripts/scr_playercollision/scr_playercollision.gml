@@ -4,7 +4,7 @@ function scr_playercollision(){
 
 	var _collision = false;
 	
-	if (tilemap_get_at_pixel(collisionMap, x + hSpeed - 16, y) || tilemap_get_at_pixel(collisionMap, x + hSpeed + 16, y))
+	if (tilemap_get_at_pixel(global.collisionMap, x + hSpeed - 16, y) || tilemap_get_at_pixel(global.collisionMap, x + hSpeed + 16, y))
 	{
 		//x -= x mod TILE_SIZE;
 		//if(sign(hSpeed) == 1)
@@ -17,7 +17,7 @@ function scr_playercollision(){
 	
 	x += hSpeed;
 	
-	if (tilemap_get_at_pixel(collisionMap, x, y + vSpeed)   )
+	if (tilemap_get_at_pixel(global.collisionMap, x, y + vSpeed)   )
 	{
 			
 		vSpeed = 0;
