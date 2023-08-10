@@ -24,36 +24,59 @@ if (accept_key)
 	
 	switch(menu_level)
 	{
-		case 0: //start menu
+		
+		
+		case 0: 
 			switch(pos)
 			{
-				case 0: room_goto(ROOM_START); break; //new game
+				case 0: menu_level = 1; break; //save menu
 		
-				case 1:	menu_level = 1;	break; //continue game from save
+				case 1: menu_level = 2;	break; //load menu
 		
-				case 2:  break; //open settings menu
+				case 2: 
+					global.gamePaused = false;
+					global.state = 1;
+					instance_destroy(self);
+				break; //close menu
 		
-				case 3: game_end(); break; //exit the game/program completely
+				case 3: 
+					game_end();
+				break; //quit game
 	
+			}
+		
+		break;
+		
+		case 1: //save to slot
+			switch(pos)
+			{
+		
+				case 0: save_game(0); break; //save 1
+		
+				case 1: save_game(1); break; //save slot 2
+		
+				case 2: save_game(2); break; //save slot 3
+		
+				case 3: menu_level = 0; break; //go back
+				
 			}
 			
-		break;
+		break;	
 		
-		case 1: //continue menu
+		case 2: //continue from slot
 			switch(pos)
 			{
-				case 0: load_game(0); break; //save 1
+				case 0: load_game(0); break; //load slot 1
 		
-				case 1: load_game(1);	break; //save slot 2
+				case 1: load_game(1);	break; //load slot 2
 		
-				case 2: load_game(2); break; //save slot 3
+				case 2: load_game(2); break; //load slot 3
 		
-				case 3: menu_level = 0; break; //go back to start menu
-	
+				case 3: menu_level = 0; break; //go back 
+				
 			}
 		
 		break;
-		
 		
 		
 	}

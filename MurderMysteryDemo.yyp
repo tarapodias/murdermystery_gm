@@ -75,6 +75,7 @@
     {"id":{"name":"chest_obj","path":"objects/chest_obj/chest_obj.yy",},},
     {"id":{"name":"option_spr","path":"sprites/option_spr/option_spr.yy",},},
     {"id":{"name":"sleepingbag_spr","path":"sprites/sleepingbag_spr/sleepingbag_spr.yy",},},
+    {"id":{"name":"obj_ingamemenu","path":"objects/obj_ingamemenu/obj_ingamemenu.yy",},},
     {"id":{"name":"rm_pros1","path":"rooms/rm_pros1/rm_pros1.yy",},},
   ],
   "RoomOrderNodes": [

@@ -9,34 +9,36 @@ keyActivate = keyboard_check(vk_enter) || keyboard_check(ord("Z"));
 inputDirection = point_direction(0,0,keyRight-keyLeft,keyDown-keyUp);
 inputMagnitude = (keyRight - keyLeft != 0) || (keyDown - keyUp != 0);
 
-
-if(keyActivate) 
-{	
+if (global.gamePaused == false) 
+{
+	if(keyActivate) 
+	{	
 	
 	
-	if (!(whocollided == -1))
-	{
-		if (storechoice == -1) 
+		if (!(whocollided == -1))
 		{
-			if (waittime == false)
+			if (storechoice == -1) 
 			{
-				global.state = 2;
+				if (waittime == false)
+				{
+					global.state = 2;
+				}
+				else
+				{
+					global.state = 1;
+				}
 			}
 			else
 			{
-				global.state = 1;
+				global.state = 3;
 			}
 		}
 		else
 		{
-			global.state = 3;
+		
+				global.state = 1;	
+		
 		}
-	}
-	else
-	{
-		
-			global.state = 1;	
-		
 	}
 }
 
@@ -75,6 +77,15 @@ switch(global.state)
 		
 		
 	break;	
+	
+	case 4:
+		
+		if !(instance_exists(obj_ingamemenu))
+		{
+			instance_create_depth(x, y, -11, obj_ingamemenu);
+		}
+	
+	break;
 }
 
 

@@ -53,5 +53,6 @@
     {"name":"chest_obj","order":7,"path":"objects/chest_obj/chest_obj.yy",},
     {"name":"option_spr","order":12,"path":"sprites/option_spr/option_spr.yy",},
     {"name":"sleepingbag_spr","order":14,"path":"sprites/sleepingbag_spr/sleepingbag_spr.yy",},
+    {"name":"obj_ingamemenu","order":10,"path":"objects/obj_ingamemenu/obj_ingamemenu.yy",},
   ],
 }

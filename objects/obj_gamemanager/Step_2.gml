@@ -1,17 +1,18 @@
 
 
 //pause the game
-if(keyboard_check(vk_escape)) 
+if(keyboard_check_pressed(vk_escape)) 
 {
 	global.gamePaused = !global.gamePaused;
 	
-	if(global.gamePaused)
+	if(global.gamePaused == true)
 	{
-		with(all)
-		{
-			gamePausedImageSpeed = image_speed; //storing everythings current animation speed
-			image_speed = 0;
-		}
+		global.state = 4;
+	} else
+	{
+		
+		global.state = 1;
+		instance_destroy(obj_ingamemenu);
 	}
 	
 }
