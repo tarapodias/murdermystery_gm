@@ -59,3 +59,70 @@ function load_room() {
 	
 	
 }
+
+//overall saving of the game
+function save_game(_fileNum = 0) {
+	
+	var _saveArray = array_create(0);
+	
+	//save the room youre in
+	save_room();
+	
+	//set and save stat values
+	global.statData.save_x = obj_player.x;
+	global.statData.save_y = obj_player.y;
+	global.statData.save_rm = room_get_name(room);
+	
+	array_push(_saveArray, global.statData);
+	
+	//save all the room data
+	array_push(_saveArray, global.levelData);
+	
+	//saving to file
+	var _filename = "savedata" + string(_fileNum) + ".save";
+	var _json = json_stringify(_saveArray);
+	var _buffer = buffer_create(string_byte_length(_json) + 1, buffer_fixed, 1);
+	
+	buffer_write(_buffer, buffer_string, _json);
+	buffer_save(_buffer, _filename);
+	buffer_delete(_buffer);
+	
+	
+}
+
+function load_game(_fileNum = 0) {
+	
+	//loading our save data
+	var _filename = "savedata" + string(_fileNum) + ".save";
+	if !(file_exists(_filename))
+	{
+		exit;
+	}
+	
+	//load the buffer, get the json file, then delete the buffer
+	var _buffer = buffer_load(_filename);
+	var _json = buffer_read(_buffer, buffer_string);
+	buffer_delete(_buffer);
+	
+	//unstringify the data to get the array
+	var _loadArray = json_parse(_json);
+	
+	//set the data in our game to match the loaded data
+	global.statData = array_get(_loadArray, 0);
+	global.levelData = array_get(_loadArray, 1);
+	
+	//use the new data to recreate the conditions from the save file
+		//go to the correct room
+		var _loadRoom = asset_get_index(global.statData.save_rm);
+		room_goto(_loadRoom);
+		
+			//make sure obj_saveload doesn't save the room we're exiting
+			obj_saveload.skipRoomSave = true;
+		
+		//create the player in the correct location/with correct stats
+		if instance_exists(obj_player) {instance_destroy(obj_player);};
+		instance_create_layer(global.statData.save_x, global.statData.save_y, layer, obj_player);
+	
+		//manually load the room
+		load_room();
+}

@@ -1,2 +1,7 @@
 //save the state of the room we're leaving
-save_room();
+if (skipRoomSave == false) 
+{
+	save_room();
+
+}
+skipRoomSave = false;
