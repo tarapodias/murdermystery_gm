@@ -62,6 +62,7 @@ function load_room() {
 
 //overall saving of the game
 function save_game(_fileNum = 0) {
+	//obj_ingamemenu.alarm[_fileNum] = 1;
 	
 	var _saveArray = array_create(0);
 	
@@ -72,6 +73,9 @@ function save_game(_fileNum = 0) {
 	global.statData.save_x = obj_player.x;
 	global.statData.save_y = obj_player.y;
 	global.statData.save_rm = room_get_name(room);
+	global.statData.playtime = obj_playtime.time_;
+	
+	global.myplaytime[_fileNum] = global.statData.playtime;
 	
 	array_push(_saveArray, global.statData);
 	
@@ -110,6 +114,13 @@ function load_game(_fileNum = 0) {
 	//set the data in our game to match the loaded data
 	global.statData = array_get(_loadArray, 0);
 	global.levelData = array_get(_loadArray, 1);
+
+	var thetime = global.statData.playtime;
+	obj_playtime.time_ = 0;
+	obj_playtime.time_ += thetime;
+	//var myplaytime = global.statData.playtime;
+	//myTime(myplaytime);
+	
 	
 	//use the new data to recreate the conditions from the save file
 		//go to the correct room
@@ -121,8 +132,58 @@ function load_game(_fileNum = 0) {
 		
 		//create the player in the correct location/with correct stats
 		if instance_exists(obj_player) {instance_destroy(obj_player);};
-		instance_create_layer(global.statData.save_x, global.statData.save_y, layer, obj_player);
+		instance_create_depth(global.statData.save_x, global.statData.save_y, -100, obj_player);
 	
 		//manually load the room
 		load_room();
 }
+
+function load_time(_fileNum = 0) {
+	
+	//loading our save data
+	var _filename = "savedata" + string(_fileNum) + ".save";
+	if !(file_exists(_filename))
+	{
+		exit;
+	}
+	
+	//load the buffer, get the json file, then delete the buffer
+	var _buffer = buffer_load(_filename);
+	var _json = buffer_read(_buffer, buffer_string);
+	buffer_delete(_buffer);
+	
+	//unstringify the data to get the array
+	var _loadArray = json_parse(_json);
+	
+	//set the data in our game to match the loaded data
+	global.statData = array_get(_loadArray, 0);
+	global.levelData = array_get(_loadArray, 1);
+
+	global.myplaytime[_fileNum] = global.statData.playtime;
+	
+	//obj_titlemenu.savetime[_fileNum] = global.showpt;
+	
+}
+
+function myTime(thistime) {
+	
+	
+	var s = thistime/1000000;
+	var m = s/60;
+	var h = m/60;
+	var ih = round(h);
+	var rm = 0;
+
+	if (m >= 60) && (h>0)	
+	{
+		rm = m % (ih*60);
+	} else 
+	{
+		rm = m;
+	}
+
+	var currtime = string(ih) + ":" + string_format(rm, 1, 0) + string_format(s, 1, 0);
+	return currtime;
+	
+}
+

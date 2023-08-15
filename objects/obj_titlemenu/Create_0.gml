@@ -5,6 +5,8 @@ op_space = 60;
 
 pos = 0;
 
+
+
 //start menu
 option[0, 0] = "New Game";
 option[0, 1] = "Continue";

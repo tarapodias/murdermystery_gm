@@ -29,3 +29,21 @@ for (var i = 0; i < op_length; i++)
 	draw_text_color(title_menu_x + op_border - title_menu_w/2, title_menu_y + op_border + op_space*i - title_menu_h/2 - 40, option[menu_level, i], _c, _c, _c, _c, 1);
 
 }
+
+if (instance_exists(obj_saveload))
+{
+	if (menu_level == 1)
+	{
+		for (var i = 0; i < 3; i++)
+		{
+			var _c = c_white;
+			if (pos == i)
+			{
+				_c = c_yellow;
+			}
+			var which = i;
+			load_time(which);
+			draw_text_color(title_menu_x + op_border - title_menu_w/2 + 180, title_menu_y + op_border + op_space*i - title_menu_h/2 - 40, myTime(global.myplaytime[i]), _c, _c, _c, _c, 1);
+		}
+	}
+}

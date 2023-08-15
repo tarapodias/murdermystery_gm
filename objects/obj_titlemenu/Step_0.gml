@@ -1,3 +1,4 @@
+
 accept_key = keyboard_check_pressed(vk_enter) || keyboard_check_pressed(ord("Z"));
 scroll_up = keyboard_check_pressed(vk_up) || keyboard_check_pressed(ord("W"));
 scroll_down = keyboard_check_pressed(vk_down) || keyboard_check_pressed(ord("S"));
