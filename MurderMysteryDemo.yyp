@@ -35,6 +35,7 @@
   "resources": [
     {"id":{"name":"window_obj","path":"objects/window_obj/window_obj.yy",},},
     {"id":{"name":"ts_collision","path":"tilesets/ts_collision/ts_collision.yy",},},
+    {"id":{"name":"obj_barrier","path":"objects/obj_barrier/obj_barrier.yy",},},
     {"id":{"name":"atticfloor_spr","path":"sprites/atticfloor_spr/atticfloor_spr.yy",},},
     {"id":{"name":"ts_atticfloor","path":"tilesets/ts_atticfloor/ts_atticfloor.yy",},},
     {"id":{"name":"scr_playerstatefree","path":"scripts/scr_playerstatefree/scr_playerstatefree.yy",},},
@@ -75,6 +76,7 @@
     {"id":{"name":"portraitvictoria_spr","path":"sprites/portraitvictoria_spr/portraitvictoria_spr.yy",},},
     {"id":{"name":"chest_obj","path":"objects/chest_obj/chest_obj.yy",},},
     {"id":{"name":"option_spr","path":"sprites/option_spr/option_spr.yy",},},
+    {"id":{"name":"spr_barrier","path":"sprites/spr_barrier/spr_barrier.yy",},},
     {"id":{"name":"sleepingbag_spr","path":"sprites/sleepingbag_spr/sleepingbag_spr.yy",},},
     {"id":{"name":"obj_ingamemenu","path":"objects/obj_ingamemenu/obj_ingamemenu.yy",},},
     {"id":{"name":"rm_pros1","path":"rooms/rm_pros1/rm_pros1.yy",},},

@@ -11,6 +11,7 @@ camera_border_x = camera_get_view_border_x(view_camera[0]);
 camera_border_y = camera_get_view_border_y(view_camera[0]);
 textbox_x = camera_width/2 - camera_border_x/4;
 textbox_y = camera_height/2 - camera_border_y + camera_offset;
+text_x_offset[0] = 0;
 
 
 if (!setup)

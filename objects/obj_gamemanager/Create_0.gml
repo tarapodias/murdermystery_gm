@@ -1,5 +1,6 @@
 global.gamePaused = false;
 global.state = 0;
+global.donttalk = false;
 
 
 

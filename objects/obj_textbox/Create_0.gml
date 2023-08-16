@@ -18,6 +18,7 @@ char[0,0] = "";
 char_x[0,0] = 0;
 char_y[0,0] = 0;
 
+
 //options
 option[0] = "";  //initialize options array
 option_link_id[0] = -1;

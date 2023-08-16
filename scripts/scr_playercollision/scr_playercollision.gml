@@ -17,7 +17,7 @@ function scr_playercollision(){
 	
 	x += hSpeed;
 	
-	if (tilemap_get_at_pixel(global.collisionMap, x, y + vSpeed)   )
+	if (tilemap_get_at_pixel(global.collisionMap, x, y + vSpeed))
 	{
 			
 		vSpeed = 0;
