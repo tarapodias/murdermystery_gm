@@ -12,4 +12,10 @@ storechoice = -1;
 
 global.state = 1;
 waittime = false;
+idlepose = 0;
+
+if (!instance_exists(obj_camera))
+{
+	instance_create_depth(x, y, 10, obj_camera);
+}
 

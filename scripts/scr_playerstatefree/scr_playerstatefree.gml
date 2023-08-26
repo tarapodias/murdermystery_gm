@@ -2,11 +2,12 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_playerstatefree(){
 
-	hSpeed = lengthdir_x(inputMagnitude*speedWalk,inputDirection);
-	vSpeed = lengthdir_y(inputMagnitude*speedWalk,inputDirection);
+	hSpeed = round(lengthdir_x(inputMagnitude*speedWalk,inputDirection));
+	vSpeed = round(lengthdir_y(inputMagnitude*speedWalk,inputDirection));
 
 	scr_playercollision();
 
+	
 
 	if (inputMagnitude != 0) 
 	{
@@ -14,24 +15,86 @@ function scr_playerstatefree(){
 	
 		if(keyLeft)  
 		{
-			sprite_index = lonnaleft_spr;
+			sprite_index = spr_lonna_left;
+			
+			idlepose = 3;
+			
 		}
 		if(keyRight)
 		{
-			sprite_index = lonnaright_spr;
+			sprite_index = spr_lonna_right;
+			
+			idlepose = 2;
+		
 		}
 		if(keyUp) 
 		{
-			sprite_index = lonnaup_spr;
+			sprite_index = spr_lonna_up;
+			
+			idlepose = 1;
+			
 		}
 		if(keyDown)
 		{
-			sprite_index = lonnadown_spr;
+			sprite_index = spr_lonna_down;
+			
+			idlepose = 0;
+			
+		}
+		
+		if(keyDown && keyLeft)
+		{
+			sprite_index = spr_lonna_diag_left;
+			
+			idlepose = 4;
+			
+		}
+		
+		if(keyDown && keyRight)
+		{
+			sprite_index = spr_lonna_diag_right;
+		
+			idlepose = 5;
+			
 		}
 	
 	} else 
 		{
-			sprite_index = lonnaidle_spr;
+			switch(idlepose)
+			{
+				case 0:
+					sprite_index = spr_lonna_idle_down;
+				
+				break;
+				
+				case 1:
+					sprite_index = spr_lonna_idle_up;
+				
+				break;
+				
+				case 2:
+					sprite_index = spr_lonna_idle_right;
+				
+				break;
+				
+				case 3:
+					sprite_index = spr_lonna_idle_left;
+				
+				break;
+				
+				case 4:
+					sprite_index = spr_lonna_idle_diag_down_left;
+				
+				break;
+				
+				case 5:
+					sprite_index = spr_lonna_idle_diag_down_right;
+				
+				break;
+			
+			
+			}
+			
 		}
 		
 		
