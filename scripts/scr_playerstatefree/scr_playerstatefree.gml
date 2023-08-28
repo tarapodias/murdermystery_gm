@@ -44,7 +44,7 @@ function scr_playerstatefree(){
 		
 		if(keyDown && keyLeft)
 		{
-			sprite_index = spr_lonna_diag_left;
+			sprite_index = spr_lonna_diag_down_left;
 			
 			idlepose = 4;
 			
@@ -52,9 +52,25 @@ function scr_playerstatefree(){
 		
 		if(keyDown && keyRight)
 		{
-			sprite_index = spr_lonna_diag_right;
+			sprite_index = spr_lonna_diag_down_right;
 		
 			idlepose = 5;
+			
+		}
+		
+		if(keyUp && keyLeft)
+		{
+			sprite_index = spr_lonna_diag_up_left;
+			
+			idlepose = 6;
+			
+		}
+		
+		if(keyUp && keyRight)
+		{
+			sprite_index = spr_lonna_diag_up_right;
+		
+			idlepose = 7;
 			
 		}
 	
@@ -89,6 +105,16 @@ function scr_playerstatefree(){
 				
 				case 5:
 					sprite_index = spr_lonna_idle_diag_down_right;
+				
+				break;
+				
+				case 6:
+					sprite_index = spr_lonna_idle_diag_up_left;
+				
+				break;
+				
+				case 7:
+					sprite_index = spr_lonna_idle_diag_up_right;
 				
 				break;
 			
