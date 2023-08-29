@@ -11,7 +11,7 @@ camera_border_x = camera_get_view_border_x(view_camera[0]);
 camera_border_y = camera_get_view_border_y(view_camera[0]);
 textbox_x = camera_width/2 - camera_border_x/4;
 textbox_y = camera_height/2 - camera_border_y + camera_offset;
-text_x_offset[0] = 0;
+
 
 
 if (!setup)
@@ -85,7 +85,7 @@ if (!setup)
 		for (var c = 0; c < text_length[p]; c++)
 		{
 			var _char_pos = c+1;
-			var _txt_x = textbox_x + border + text_x_offset[p];
+			var _txt_x = textbox_x + border + text_x_offset[p] + 10;
 			var _txt_y = textbox_y + border;
 		
 			//get current width of the line
@@ -184,11 +184,7 @@ else
 	text_pause_timer--;
 }
 
-//draw textbox
-var _txtb_x = textbox_x + text_x_offset[page];
-var _txtb_y = textbox_y;
 
-draw_sprite(textbox_sprite, 0,_txtb_x, _txtb_y);
 
 //draw portrait sprite
 if !(speaker_sprite[page] == noone)
@@ -206,6 +202,12 @@ if !(speaker_sprite[page] == noone)
 	
 	
 } 
+
+//draw textbox
+var _txtb_x = textbox_x + text_x_offset[page];
+var _txtb_y = textbox_y;
+
+draw_sprite(textbox_sprite, 0,_txtb_x, _txtb_y);
 
 
 //draw text
@@ -251,7 +253,9 @@ if (draw_char == text_length[page] && page == page_number - 1)
 	option_pos += scroll_down - scroll_up;
 	option_pos = clamp(option_pos, 0, option_number - 1);
 	
-
+	draw_set_font(fnt_choice);
+	draw_set_valign(fa_top);
+	draw_set_halign(fa_left);
 		
 	//draw the options
 	var _option_space = 60;
@@ -260,20 +264,24 @@ if (draw_char == text_length[page] && page == page_number - 1)
 	{
 		//option box
 		var _option_width = string_width(option[op]); //for checking the width of the text
-		draw_sprite(option_sprite, 0, _txtb_x + _option_border, _txtb_y - _option_space*option_number + _option_space*op);
+		draw_sprite(option_sprite, 0, _txtb_x + _option_border, _txtb_y - _option_space*option_number + _option_space*op - 10);
 		
 		//the arrow
 		if (option_pos == op)
 		{
-			draw_sprite(arrow_spr, 0, _txtb_x + 15, _txtb_y - _option_space*option_number + _option_space*op + 5);
+			draw_sprite(arrow_spr, 0, _txtb_x + 15, _txtb_y - _option_space*option_number + _option_space*op - 5);
+			draw_sprite(spr_opt_hilight, 0, _txtb_x + _option_border, _txtb_y - _option_space*option_number + _option_space*op - 10);
 			obj_player.storechoice = option_link_id[option_pos]; 
 			
 		}
 		
 		//option text
 		
-		draw_text(_txtb_x + _option_border + 30, _txtb_y - _option_space*option_number + _option_space*op + 10, option[op]);
-	
+		draw_text_color(_txtb_x + _option_border + 10, _txtb_y  - _option_space*option_number + _option_space*op, "A   " + option[op], c_black, c_black, c_black, c_black, 1);
+		
 	}
+	draw_set_font(testfont_fnt);
+	draw_set_valign(fa_top);
+	draw_set_halign(fa_left);
 }
 

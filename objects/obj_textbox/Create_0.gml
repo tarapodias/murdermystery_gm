@@ -1,11 +1,12 @@
 //textbox parameters
-textbox_sprite = textbox_spr;
+textbox_sprite = spr_textbox;
 textbox_width = sprite_get_width(textbox_sprite);
 textbox_height = sprite_get_height(textbox_sprite);
-border = 8;
-line_sep = 22;
+border = 20;
+line_sep = 40;
 line_width = textbox_width - border*2;
 camera_offset = 500;
+text_x_offset[0] = 0;
 
 //text parameters
 page = 0; //number of pages
@@ -24,7 +25,7 @@ option[0] = "";  //initialize options array
 option_link_id[0] = -1;
 option_pos = 0;
 option_number = 0;
-option_sprite = option_spr;
+option_sprite = spr_option;
 whichchoice = -1;
 
 
