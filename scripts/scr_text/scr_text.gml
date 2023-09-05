@@ -86,7 +86,7 @@ if (argument_count > 1)
 	switch(argument[1])
 	{
 		case "lonna":
-			speaker_sprite[page_number] = portraitlonna_spr;
+			speaker_sprite[page_number] = spr_portrait_lonna;
 		break;
 		
 		case "victoria":

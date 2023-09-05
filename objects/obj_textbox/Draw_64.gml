@@ -32,13 +32,13 @@ if (!setup)
 				
 			//if character portrait on left
 			text_x_offset[p] = 120;
-			portrait_x_offset[p] = -120;
+			portrait_x_offset[p] = -112;
 			
 			//if character portrait on right
 			if (speaker_side[p] == -1)
 			{
 				text_x_offset[p] = -120;
-				portrait_x_offset[p] = 890;
+				portrait_x_offset[p] = 648;
 			}
 		
 			//if no characer sprite
@@ -197,8 +197,8 @@ if !(speaker_sprite[page] == noone)
 		_speaker_x += sprite_width;
 	}
 	
-	draw_sprite_ext(sprite_index, image_index, _speaker_x, textbox_y, speaker_side[page], 1, 0, c_white, 1);
-
+	draw_sprite_ext(sprite_index, image_index, _speaker_x, textbox_y, 1, 1, 0, c_white, 1);
+	draw_sprite_ext(spr_portrait_holder, 0, _speaker_x, textbox_y, 1, 1, 0, c_white, 1);
 	
 	
 } 
