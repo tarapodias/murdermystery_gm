@@ -199,8 +199,13 @@ if !(speaker_sprite[page] == noone)
 	
 	draw_sprite_ext(sprite_index, image_index, _speaker_x, textbox_y, 1, 1, 0, c_white, 1);
 	draw_sprite_ext(spr_portrait_holder, 0, _speaker_x, textbox_y, 1, 1, 0, c_white, 1);
-	
-	
+	draw_set_font(fnt_name);
+	draw_set_valign(fa_middle);
+	draw_set_halign(fa_center);
+	draw_text(_speaker_x + 115, textbox_y + 200, speaker_name[page]);
+	draw_set_font(testfont_fnt);
+	draw_set_valign(fa_top);
+	draw_set_halign(fa_left);
 } 
 
 //draw textbox

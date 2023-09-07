@@ -23,6 +23,7 @@ function scr_set_default_for_text() {
 	
 	speaker_sprite[page_number] = noone;
 	speaker_side[page_number] = 1;
+	speaker_name[page_number] = noone;
 	
 }
 
@@ -87,6 +88,7 @@ if (argument_count > 1)
 	{
 		case "lonna":
 			speaker_sprite[page_number] = spr_portrait_lonna;
+			speaker_name[page_number] = "LONNA DUPIN";
 		break;
 		
 		case "victoria":

@@ -44,6 +44,7 @@
     {"id":{"name":"scr_playerstatefree","path":"scripts/scr_playerstatefree/scr_playerstatefree.yy",},},
     {"id":{"name":"lonnadown_spr","path":"sprites/lonnadown_spr/lonnadown_spr.yy",},},
     {"id":{"name":"rm_template","path":"rooms/rm_template/rm_template.yy",},},
+    {"id":{"name":"fnt_name","path":"fonts/fnt_name/fnt_name.yy",},},
     {"id":{"name":"scr_savefunctions","path":"scripts/scr_savefunctions/scr_savefunctions.yy",},},
     {"id":{"name":"scr_text","path":"scripts/scr_text/scr_text.yy",},},
     {"id":{"name":"scr_playerstatetalk","path":"scripts/scr_playerstatetalk/scr_playerstatetalk.yy",},},

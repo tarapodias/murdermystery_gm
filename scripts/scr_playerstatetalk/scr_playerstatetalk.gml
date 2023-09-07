@@ -74,7 +74,7 @@ function scr_playerstatetalk(whichdialogue){
 			scr_text("im a dragon", "lonna", -1);
 				scr_text_color(5, 11, c_green, c_olive, c_lime, c_aqua);
 			scr_text("rawr");
-			scr_text("i say im dirty dan", "victoria");
+			scr_text("i say im dirty dan", "lonna");
 			scr_text("no! im dirty dan!", "lonna", -1);
 			scr_text("i love socks!! how do i tell her? what can I say to make things right, huh? tell me! come one, please. please just help me.", "lonna", -1);
 		
