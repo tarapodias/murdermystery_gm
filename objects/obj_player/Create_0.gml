@@ -16,6 +16,6 @@ idlepose = 0;
 
 if (!instance_exists(obj_camera))
 {
-	instance_create_depth(x, y, 10, obj_camera);
+	instance_create_depth(x, y, -1000, obj_camera);
 }
 

@@ -33,8 +33,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "sleepingbag_spr",
-    "path": "sprites/sleepingbag_spr/sleepingbag_spr.yy",
+    "name": "desk_spr",
+    "path": "sprites/desk_spr/desk_spr.yy",
   },
   "spriteMaskId": null,
   "visible": true,

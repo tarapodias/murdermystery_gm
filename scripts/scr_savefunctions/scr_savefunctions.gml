@@ -49,10 +49,10 @@ function load_room() {
 	if instance_exists(obj_interactiveparent) {instance_destroy(obj_interactiveparent);};
 	for (var i = 0; i < _roomStruct.talkingObjNum; i++)
 	{
-		with(instance_create_depth(_roomStruct.talkingObjData[i].x, _roomStruct.talkingObjData[i].y, -10, _roomStruct.talkingObjData[i].objInd))
+		with(instance_create_layer(_roomStruct.talkingObjData[i].x, _roomStruct.talkingObjData[i].y, "Instances", _roomStruct.talkingObjData[i].objInd))
 		{
 			updatetext = _roomStruct.talkingObjData[i].updatetext;
-		
+	
 		
 		}
 	}
@@ -132,7 +132,7 @@ function load_game(_fileNum = 0) {
 		
 		//create the player in the correct location/with correct stats
 		if instance_exists(obj_player) {instance_destroy(obj_player);};
-		instance_create_depth(global.statData.save_x, global.statData.save_y, -100, obj_player);
+		instance_create_layer(global.statData.save_x, global.statData.save_y, "Instances", obj_player);
 	
 		//manually load the room
 		load_room();
