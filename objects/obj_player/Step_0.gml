@@ -79,9 +79,10 @@ switch(global.state)
 	break;	
 	
 	case 4:
-		
+		show_debug_message("is this even being called");
 		if !(instance_exists(obj_ingamemenu))
 		{
+			show_debug_message("its here but i cant see it");
 			instance_create_depth(x, y, -11, obj_ingamemenu);
 		}
 	

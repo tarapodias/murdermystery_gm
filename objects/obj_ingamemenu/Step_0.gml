@@ -35,6 +35,7 @@ if (accept_key)
 				case 1: menu_level = 2;	break; //load menu
 		
 				case 2: 
+				show_debug_message("if this is here i messed up");
 					global.gamePaused = false;
 					global.state = 1;
 					instance_destroy(self);

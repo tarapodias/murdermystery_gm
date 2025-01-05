@@ -1,5 +1,56 @@
+/*/global.statData = 
+{
+	save_x : 0,
+	save_y : 0,
+	//save_rm : "rm_pros1",
+	//playtime : 0,
+	//displaytime : "",
+
+}/*/
+
+
+global.game_data = 
+{
+	room_data: {},
+	player_data: {}
+};
+
 function save_room() {
 	
+	var _array = [];
+	
+	
+	with(obj_interactiveparent)
+	{
+	
+		var _struct = 
+		{
+			x: x,
+			y: y,
+			objInd: object_index,
+			updatetext: updatetext,
+
+		};
+		
+		array_push( _array, _struct);
+	
+	}
+	
+	//with(obj_player)
+	//{
+	
+	//	var _struct = 
+	//	{
+	//		x: x,
+	//		y: y,
+
+	//	};
+		
+	//	array_push( _array, _struct);
+	
+	//}
+	
+	/*/
 	//find the number of interactible objects we want to save
 	var _talkingObjNum = instance_number(obj_interactiveparent);
 	
@@ -28,14 +79,45 @@ function save_room() {
 		
 		}
 	
+	
 	//store the rooms specifc struct in global.levelData's variable for its corresponding room
 	if (room == rm_pros1) {	global.levelData.pro_s1 = _roomStruct;};
 	if (room == rm_pros2) {	global.levelData.pro_s2 = _roomStruct;};
+	/*/
 	
+	struct_set(global.game_data.room_data, room_get_name(room), _array);
+	//struct_set(global.game_data.player_data, object_get_name(obj_player), _array);
+
 }
 
 function load_room() {
 	
+	
+	
+	var _array = struct_get( global.game_data.room_data, room_get_name( room));
+	
+	if( _array != undefined)
+	{
+		
+		instance_destroy(obj_interactiveparent);
+	
+		
+		for( var i = 0; i < array_length( _array); i += 1) 
+		{
+			var _struct = _array[ i];
+			
+			with(instance_create_layer( _struct.x, _struct.y, "Instances", _struct.objInd))
+			{
+				updatetext = _struct.updatetext;
+			}
+		
+			//updatetext = _struct.updatetext;		
+		
+		}
+	
+	
+	
+	/*/
 	var _roomStruct = 0;
 	
 	//get correct struct for the room you're in
@@ -56,35 +138,40 @@ function load_room() {
 		
 		}
 	}
+	/*/
 	
-	
+	}
 }
 
 //overall saving of the game
 function save_game(_fileNum = 0) {
 	//obj_ingamemenu.alarm[_fileNum] = 1;
 	
-	var _saveArray = array_create(0);
+	//var _saveArray = array_create(0);
 	
 	//save the room youre in
 	save_room();
 	
-	//set and save stat values
+/*/	//set and save stat values
 	global.statData.save_x = obj_player.x;
 	global.statData.save_y = obj_player.y;
 	global.statData.save_rm = room_get_name(room);
 	global.statData.playtime = obj_playtime.time_;
 	
 	global.myplaytime[_fileNum] = global.statData.playtime;
-	
-	array_push(_saveArray, global.statData);
+/*/	
+	//array_push(_saveArray, global.statData);
 	
 	//save all the room data
-	array_push(_saveArray, global.levelData);
+	//array_push(_saveArray, global.game_data);
+	global.game_data.player_data.x = obj_player.x;
+	global.game_data.player_data.y = obj_player.y;
+	global.game_data.player_data.imaroom = room;
 	
 	//saving to file
 	var _filename = "savedata" + string(_fileNum) + ".save";
-	var _json = json_stringify(_saveArray);
+	//var _json = json_stringify(_saveArray);
+	var _json = json_stringify(global.game_data);
 	var _buffer = buffer_create(string_byte_length(_json) + 1, buffer_fixed, 1);
 	
 	buffer_write(_buffer, buffer_string, _json);
@@ -109,36 +196,47 @@ function load_game(_fileNum = 0) {
 	buffer_delete(_buffer);
 	
 	//unstringify the data to get the array
-	var _loadArray = json_parse(_json);
+	//var _loadArray = json_parse(_json);
 	
 	//set the data in our game to match the loaded data
-	global.statData = array_get(_loadArray, 0);
-	global.levelData = array_get(_loadArray, 1);
+//	global.statData = array_get(_loadArray, 0);
+	//global.game_data = array_get(_loadArray, 0);
+	global.game_data = json_parse(_json);
+	//var playerx = struct_get( global.game_data.player_data, x);
+	//var playery = struct_get( global.game_data.player_data, y);
 
-	var thetime = global.statData.playtime;
-	obj_playtime.time_ = 0;
-	obj_playtime.time_ += thetime;
+
+//	var thetime = global.statData.playtime;
+//	obj_playtime.time_ = 0;
+//	obj_playtime.time_ += thetime;
 	//var myplaytime = global.statData.playtime;
 	//myTime(myplaytime);
 	
 	
 	//use the new data to recreate the conditions from the save file
 		//go to the correct room
-		var _loadRoom = asset_get_index(global.statData.save_rm);
-		room_goto(_loadRoom);
+	//var _loadRoom = asset_get_index(global.game_data.room_data.);
+	//	room_goto(_loadRoom);
 		
 			//make sure obj_saveload doesn't save the room we're exiting
-			obj_saveload.skipRoomSave = true;
+		//manually load the room
 		
 		//create the player in the correct location/with correct stats
-		if instance_exists(obj_player) {instance_destroy(obj_player);};
-		instance_create_layer(global.statData.save_x, global.statData.save_y, "Instances", obj_player);
+	room_goto(global.game_data.player_data.imaroom);
 	
-		//manually load the room
-		load_room();
+	obj_saveload.skipRoomSave = true;
+
+	
+	load_room();
+	
+	if instance_exists(obj_player) {instance_destroy(obj_player);};
+	instance_create_layer(global.game_data.player_data.x, global.game_data.player_data.y, "Instances", obj_player);
+	
+	
+
 }
 
-function load_time(_fileNum = 0) {
+/*/function load_time(_fileNum = 0) {
 	
 	//loading our save data
 	var _filename = "savedata" + string(_fileNum) + ".save";
@@ -186,4 +284,5 @@ function myTime(thistime) {
 	return currtime;
 	
 }
+/*/
 

@@ -1,18 +1,24 @@
 
 
-//pause the game
-if(keyboard_check_pressed(vk_escape)) 
+////pause the game
+if !(global.state == 2 || global.state == 3)
 {
-	global.gamePaused = !global.gamePaused;
-	
-	if(global.gamePaused == true)
+	if(keyboard_check_pressed(ord("C"))) 
 	{
-		global.state = 4;
-	} else
-	{
+		show_debug_message(global.gamePaused);
+		global.gamePaused = !global.gamePaused;
+		show_debug_message(global.gamePaused);
+
+		if(global.gamePaused == true)
+		{
+			show_debug_message("the state should change");
+			global.state = 4;
+		} else
+		{
 		
-		global.state = 1;
-		instance_destroy(obj_ingamemenu);
-	}
+			global.state = 1;
+			instance_destroy(obj_ingamemenu);
+		}
 	
+	}
 }
